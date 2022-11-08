@@ -1,5 +1,7 @@
 package easy
 
+// https://leetcode.com/problems/longest-common-prefix/description/
+
 // Using sorting
 // complexity O(nLog(n)) + O(m);  space O(1)
 fun longestCommonPrefix(strs: Array<String>): String {
