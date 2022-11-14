@@ -2,7 +2,7 @@ package easy;
 
 // https://leetcode.com/problems/remove-element/
 
-public class RemoveElement {
+public class RemoveElement_27 {
 
     public static int removeElement(int[] nums, int val) {
         int k = 0;

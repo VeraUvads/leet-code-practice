@@ -1,7 +1,7 @@
 package easy;
 //  https://leetcode.com/problems/merge-two-sorted-lists/
 
-public class MergeTwoSortedLists {
+public class MergeTwoSortedLists_21 {
     public static class ListNode {
         int val;
         ListNode next;
