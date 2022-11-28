@@ -10,7 +10,6 @@ public class IsSubsequence_392 {
                 sIndex++;
             }
             tIndex++;
-
         }
         return sIndex == s.length();
     }
