@@ -20,7 +20,6 @@ public class FindAllAnagramsInString_438 {
             sCounter[(int)(s.charAt(i) - 'a')]++;
             if (i >= p.length()) {
                 sCounter[(int)(s.charAt(i - p.length()) - 'a')]--;
-
             }
 
             if (Arrays.equals(pCounter, sCounter)) {
