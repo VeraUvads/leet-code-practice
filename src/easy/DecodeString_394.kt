@@ -18,32 +18,28 @@ class DecodeString_394 {
                 }
                 '[' -> {
                     numbersStack.add(k)
+                    stringStack.add(helper)
+                    helper = StringBuilder()
                     k = 0
                 }
                 ']' -> {
-                    if (helper.isNotEmpty())  {
-                        stringStack.add(helper)
-                        helper = StringBuilder()
+                    val decodedString = stringStack.pop();
+                    for (i in numbersStack.pop() downTo 1) {
+                        decodedString.append(helper);
                     }
-                    val currentMultiplier = numbersStack.pop()
-                    val currentString = stringStack.pop().repeat(currentMultiplier)
-                    if (stringStack.isEmpty()) {
-                        stringStack.add(StringBuilder(currentString))
-                    } else {
-                        stringStack.add(stringStack.pop().append(currentString))
-                    }
+                    helper = decodedString;
                 }
                 else -> {
                     k = k * 10 + char.toString().toInt()
-                    if (helper.isNotEmpty())  {
-                        stringStack.add(helper)
-                        helper = StringBuilder()
-                    }
                 }
             }
         }
         if (helper.isNotEmpty())  {
-            stringStack.add(stringStack.pop().append(helper))
+            if (stringStack.isNotEmpty()) {
+                stringStack.add(stringStack.pop().append(helper))
+            } else{
+                return helper.toString()
+            }
         }
         return stringStack.pop().toString()
     }
