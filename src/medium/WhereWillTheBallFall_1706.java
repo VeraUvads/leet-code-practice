@@ -15,7 +15,8 @@ public class WhereWillTheBallFall_1706 {
                 int next = curColumn + row[curColumn];
                 if (next < 0 || next > row.length - 1 || row[curColumn] != row[next]) {
                     curColumn = -1;
-                } else if (curColumn != -1) {
+                    break;
+                } else {
                     curColumn = next;
                 }
             }
@@ -24,6 +25,4 @@ public class WhereWillTheBallFall_1706 {
         return result;
     }
 
-    public static void main(String[] args) {
-    }
 }
