@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class KthSmallestElementInABST_173 {
+public class KthSmallestElementInABST_230 {
 
     private List<Integer> sorted = new ArrayList<>();
     public int kthSmallest(TreeNode root, int k) {
