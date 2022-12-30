@@ -3,6 +3,7 @@ package medium;
 import java.util.*;
 
 public class MergeIntervals_56 {
+    // https://leetcode.com/problems/merge-intervals/description/?envType=study-plan&id=level-2
 
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
