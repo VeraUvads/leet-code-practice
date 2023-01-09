@@ -12,7 +12,7 @@ public class Reverse_Integer_7 {
                     result > Integer.MAX_VALUE / 10 ||
                             (result == Integer.MAX_VALUE / 10 && pop > 7) ||
                             result < Integer.MIN_VALUE / 10 ||
-                            (result < Integer.MIN_VALUE / 10 && pop < -8)
+                            (result == Integer.MIN_VALUE / 10 && pop < -8)
             ) return 0;
             result = result * 10 + pop;
         }
