@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindLeavesOfBinaryTree_366 {
+    // https://leetcode.com/problems/find-leaves-of-binary-tree/description/
+
     List<List<Integer>> leafs = new ArrayList<>();
 
     public List<List<Integer>> findLeaves(TreeNode root) {
