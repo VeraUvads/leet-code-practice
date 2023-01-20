@@ -5,28 +5,25 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MinimumTimeDifference_539 {
-    public static int findMinDifference(List<String> timePoints) {
-        int minDiff = Integer.MAX_VALUE;
+    // https://leetcode.com/problems/minimum-time-difference/description/
 
-        timePoints.sort((a, b) -> {
-            return toTime(a) - toTime(b);
-        });
-        for (int i = 1; i < timePoints.size(); i++) {
-            minDiff = Math.min(Math.abs(toTime(timePoints.get(i)) - toTime(timePoints.get(i-1))), minDiff);
+    public static int findMinDifference(List<String> timePoints) {
+        int len = timePoints.size();
+        int[] times = new int[len];
+        for (int i = 0; i < len; i++) {
+            times[i] = toTime(timePoints.get(i));
         }
-//        for (String point : timePoints) {
-//            System.out.print(" " + point);
-//        }
-        return minDiff;
+        Arrays.sort(times);
+        int answer = Integer.MAX_VALUE;
+        for (int i = 1; i < len; i++) {
+            answer = Math.min(times[i] - times[i - 1], answer);
+        }
+        answer = Math.min(answer, Math.abs(24  * 60 + times[0] - times[len - 1]));
+        return answer;
     }
 
     private static int toTime(String string) {
-        int time;
-        if (string.charAt(0) == '0' && string.charAt(1) == '0') {
-            time = 24 * 60;
-        } else {
-            time = ((string.charAt(0) - '0') * 10 + (string.charAt(1) - '0')) * 60;
-        }
+        int time = ((string.charAt(0) - '0') * 10 + (string.charAt(1) - '0')) * 60;
         time += (string.charAt(3) - '0') * 10 + (string.charAt(4) - '0');
         return time;
     }
