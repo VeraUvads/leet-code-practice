@@ -1,4 +1,4 @@
-package medium.not_finshed;
+package medium;
 
 
 import java.util.Arrays;
@@ -18,7 +18,9 @@ public class MinimumTimeDifference_539 {
         for (int i = 1; i < len; i++) {
             answer = Math.min(times[i] - times[i - 1], answer);
         }
-        answer = Math.min(answer, Math.abs(24  * 60 + times[0] - times[len - 1]));
+        // на случай если различие во времени между первым и последним минимально,
+        // а это разные дни, нужно к первому времени добавить 24 часа
+        answer = Math.min(answer, Math.abs((24  * 60 + times[0]) - times[len - 1]));
         return answer;
     }
 
