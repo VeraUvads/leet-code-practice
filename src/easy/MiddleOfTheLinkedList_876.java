@@ -1,10 +1,8 @@
 package easy;
 
+import utils.ListNode;
+
 public class MiddleOfTheLinkedList_876 {
-    public class ListNode {
-        int val;
-        ListNode next;
-    }
     // https://leetcode.com/problems/middle-of-the-linked-list/description/
 
     public ListNode middleNode(ListNode head) {

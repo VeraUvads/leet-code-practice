@@ -1,23 +1,9 @@
 package easy;
 //  https://leetcode.com/problems/merge-two-sorted-lists/
 
+import utils.ListNode;
+
 public class MergeTwoSortedLists_21 {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     // iterative
     public ListNode mergeTwoLists1(ListNode list1, ListNode list2) {

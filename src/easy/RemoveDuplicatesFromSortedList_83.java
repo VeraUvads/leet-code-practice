@@ -1,14 +1,10 @@
 package easy;
 
-import java.util.Stack;
+import utils.ListNode;
+
 
 public class RemoveDuplicatesFromSortedList_83 {
     // https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-    }
 
     public ListNode deleteDuplicates(ListNode head) {
         ListNode current = head;
