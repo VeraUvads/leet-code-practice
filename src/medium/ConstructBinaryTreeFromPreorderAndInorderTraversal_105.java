@@ -23,7 +23,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal_105 {
 
     private TreeNode toNode(int start, int end) {
         if (start > end) return null;
-        int value = preorder[preorderIndex++];
+        int value = preorder[preorderIndex++]; // первыми создастся TreeNode для самых левых
         TreeNode root = new TreeNode(value);
         int index = inorderMap.get(value);
         root.left = toNode(start, index - 1);
