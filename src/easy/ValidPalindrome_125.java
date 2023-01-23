@@ -1,5 +1,7 @@
 package easy;
 
+import java.util.PriorityQueue;
+
 public class ValidPalindrome_125 {
     // https://leetcode.com/problems/valid-palindrome/description/
 
@@ -19,6 +21,7 @@ public class ValidPalindrome_125 {
                             Character.toLowerCase(s.charAt(right--))
             ) return false;
         }
+        PriorityQueue<Integer> queue = new PriorityQueue();
         return true;
     }
 
