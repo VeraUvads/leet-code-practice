@@ -7,6 +7,8 @@ import java.util.PriorityQueue;
 
 public class MinCostToConnectAllPoints_1584 {
     // https://leetcode.com/problems/min-cost-to-connect-all-points/description/?envType=study-plan&id=level-3
+
+    // Lectures: https://leetcode.com/explore/learn/card/graph/621/algorithms-to-construct-minimum-spanning-tree/3856/
     class SolutionKruskal {
         class UnionFind {
             int[] root;
@@ -101,5 +103,42 @@ public class MinCostToConnectAllPoints_1584 {
                 this.dist = dist;
             }
         }
+    }
+
+    class SolutionPrimeOptimized {
+
+        public int minCostConnectPoints(int[][] points) {
+            if (points.length < 2) return 0;
+            int edgeUsed = 0;
+            int size = points.length;
+            boolean[] visited = new boolean[size];
+            int[] minDist = new int[size];
+            for (int i = 1; i < points.length; i++) {
+                minDist[i] = Integer.MAX_VALUE;
+            }
+            int result = 0;
+            while (edgeUsed < points.length) {
+                int currentMinEdge = Integer.MAX_VALUE;
+                int currNode = -1;
+                for (int i = 0; i < points.length; i++)  {
+                    if (!visited[i] && currentMinEdge > minDist[i]) {
+                        currentMinEdge = minDist[i];
+                        currNode = i;
+                    }
+                }
+                result += currentMinEdge;
+                visited[currNode] = true;
+                edgeUsed++;
+                int[] first = points[currNode];
+                for (int i = 1; i < points.length; i++) {
+                    if (visited[i]) continue;
+                    int[] second = points[i];
+                    int dist = Math.abs(first[0] - second[0]) + Math.abs(first[1] - second[1]);
+                    minDist[i] = Math.min(dist, minDist[i]);
+                }
+            }
+            return result;
+        }
+
     }
 }
