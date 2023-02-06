@@ -1,10 +1,15 @@
-package medium;
+package medium.not_finshed;
 
+import utils.TreeNode;
+
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class NumberOfProvinces_547 {
     // https://leetcode.com/problems/number-of-provinces/?envType=study-plan&id=level-2
+
+    // TODO need to solve UnionFind
 
     public int findCircleNum(int[][] isConnected) {
         int result = 0;
@@ -27,4 +32,5 @@ public class NumberOfProvinces_547 {
         }
         return result;
     }
+
 }
