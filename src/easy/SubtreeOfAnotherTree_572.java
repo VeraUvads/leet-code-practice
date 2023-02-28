@@ -2,6 +2,8 @@ package easy;
 
 import utils.TreeNode;
 
+import java.util.Arrays;
+
 public class SubtreeOfAnotherTree_572 {
     // https://leetcode.com/problems/subtree-of-another-tree/description/
 
@@ -63,6 +65,31 @@ public class SubtreeOfAnotherTree_572 {
                 start = LPS[start - 1];
             }
         }
+    }
+
+    private static int[] lps( String pattern) {
+        int[] LPS = new int[pattern.length()];
+        int start = 0;
+        int end = 1;
+        while (end < pattern.length()) {
+            if (pattern.charAt(start) == pattern.charAt(end)) {
+                LPS[end] = start + 1;
+                start++;
+                end++;
+            } else if (start == 0) {
+                LPS[end] = 0;
+                end++;
+            } else {
+                start = LPS[start - 1];
+            }
+        }
+        return LPS;
+    }
+    public static void main(String[] args) {
+        Arrays.stream(lps("aaacecaaa")).forEach((a)-> {
+            System.out.print(a + " ");
+        });
+
     }
 
     private String serialize(TreeNode root) {
