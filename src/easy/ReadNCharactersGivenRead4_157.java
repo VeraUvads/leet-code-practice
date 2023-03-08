@@ -19,5 +19,4 @@ public class ReadNCharactersGivenRead4_157 extends Reader4 {
         return pointer;
     }
 
-
 }
