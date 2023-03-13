@@ -1,42 +1,44 @@
 package medium;
 
 public class AndroidUnlockPatterns_351 {
-
-    int passwords = 0;
+    // https://leetcode.com/problems/android-unlock-patterns/description/
 
     public int numberOfPatterns(int m, int n) {
-        backTrack(new boolean[3][3], m, n, 0, -1);
+        int passwords = 0;
+        boolean[][] grid = new boolean[3][3];
+        for(int i = m; i <= n; i++) {
+            passwords += backTrack(grid, i - 1, 0) * 4;
+            passwords += backTrack(grid, i - 1, 1) * 4;
+            passwords += backTrack(grid, i - 1, 4);
+        }
         return passwords;
     }
 
-    private void backTrack(boolean[][] grid, int m, int n, int count, int prev) {
-        if (count > n) return;
-        if (count >= m) {
-            passwords++;
-        }
-        for (int i = 0; i < 9; i++) {
-            boolean res = couldUse(grid, i, prev);
+    private int backTrack(boolean[][] grid, int left, int prev) {
+        if (left < 0) return 0;
+        if (left == 0) return 1;
 
-            if (res) {
-                grid[i / 3][i % 3] = true;
-                backTrack(grid, m, n, count + 1, i);
-                grid[i / 3][i % 3] = false;
+        grid[prev / 3][prev % 3] = true;
+        int passwords = 0;
+        for (int i = 0; i < 9; i++) {
+            if (couldUse(grid, i, prev)) {
+                passwords += backTrack(grid, left - 1, i);
             }
         }
+        grid[prev / 3][prev % 3] = false;
+        return passwords;
     }
 
     private boolean couldUse(boolean[][] grid, int number, int prev) {
         int curRow = number / 3;
         int curCol = number % 3;
         if (grid[curRow][curCol]) return false;
-        if (prev == -1) return true;
         int prevRow = prev / 3;
         int prevCol = prev % 3;
 
 
         int diffRow = Math.abs(curRow - prevRow);
         int diffCol = Math.abs(curCol - prevCol);
-
 
 
         if (diffRow <=1 && diffCol <= 1) return true;
@@ -52,5 +54,7 @@ public class AndroidUnlockPatterns_351 {
 
         return true;
     }
+
+
 
 }
