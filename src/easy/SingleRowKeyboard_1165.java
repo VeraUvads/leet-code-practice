@@ -1,6 +1,6 @@
 package easy;
 
-public class Single_Row_Keyboard_1165 {
+public class SingleRowKeyboard_1165 {
     // https://leetcode.com/problems/single-row-keyboard/description/
     public int calculateTime(String keyboard, String word) {
         if (word.length() == 0) return 0;
