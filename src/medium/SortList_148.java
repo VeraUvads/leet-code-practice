@@ -1,15 +1,9 @@
 package medium;
 
+import utils.ListNode;
+
 public class SortList_148 {
     // https://leetcode.com/problems/sort-list/description/?envType=study-plan&id=level-2
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
