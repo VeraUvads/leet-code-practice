@@ -2,13 +2,10 @@ package medium;
 
 import utils.TreeNode;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class LowestCommonAncestorOfABinaryTree_236 {
     // https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 
-    Set<TreeNode> ancestors = new HashSet<>();
     TreeNode lowest = null;
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
