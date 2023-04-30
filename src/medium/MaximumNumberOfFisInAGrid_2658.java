@@ -1,6 +1,8 @@
 package medium;
 
 public class MaximumNumberOfFisInAGrid_2658 {
+    // https://leetcode.com/problems/maximum-number-of-fish-in-a-grid/
+
     int[][] grid;
     int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
