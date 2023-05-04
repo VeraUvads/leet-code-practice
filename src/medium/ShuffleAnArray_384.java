@@ -6,9 +6,9 @@ import java.util.Random;
 public class ShuffleAnArray_384 {
     // https://leetcode.com/problems/shuffle-an-array/description/
 
-    private int[] initialArray;
+    private final int[] initialArray;
+    private final Random random;
     private int[] nums;
-    private Random random;
 
     public ShuffleAnArray_384(int[] nums) {
         this.nums = nums;
@@ -26,7 +26,6 @@ public class ShuffleAnArray_384 {
         for (int i = 0; i < n; i++) {
             int newIndex = i + random.nextInt(n - i);
             swap(nums, i, newIndex);
-            // swap(nums, newIndex, newIndex);
         }
         return nums;
     }
