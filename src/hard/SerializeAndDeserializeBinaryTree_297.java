@@ -5,23 +5,21 @@ import utils.TreeNode;
 public class SerializeAndDeserializeBinaryTree_297 {
     // https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        if (root == null) return "null";
         StringBuilder builder = new StringBuilder();
-        builder.append(root.val);
-        dfs(root.left, builder);
-        dfs(root.right, builder);
+        dfs(root, builder);
         return builder.toString();
     }
 
     private void dfs(TreeNode root, StringBuilder builder) {
-        builder.append(" ");
         if (root == null) {
-            builder.append("null");
+            builder.append("null ");
             return;
         }
         builder.append(root.val);
+        builder.append(" ");
         dfs(root.left, builder);
         dfs(root.right, builder);
     }
@@ -30,7 +28,6 @@ public class SerializeAndDeserializeBinaryTree_297 {
     // 1 2 null null 3 4 null null 5 null null
     private int position;
     private String[] arr;
-
     public TreeNode deserialize(String data) {
         arr = data.split(" ");
         position = 0;
@@ -47,8 +44,6 @@ public class SerializeAndDeserializeBinaryTree_297 {
 
     private TreeNode parse(String string) {
         if (string.equals("null")) return null;
-        TreeNode node = new TreeNode();
-        node.val = Integer.parseInt(string);
-        return node;
+        return new TreeNode(Integer.parseInt(string));
     }
 }
