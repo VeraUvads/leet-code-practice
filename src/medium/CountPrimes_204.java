@@ -6,19 +6,35 @@ public class CountPrimes_204 {
     public int countPrimes(int n) {
         if (n < 2) return 0;
         boolean[] numbers = new boolean[n + 1];
-        numbers[0] = true;
-        numbers[1] = true;
         int counter = 0;
         for (int i = 2; i < n; i++) {
             if (!numbers[i]) {
                 counter++;
-                int a = i;
-                while (a + i <= n) {
-                    numbers[a + i] = true;
-                    a+=i;
+                for (int j = i * 2; j < n; j= j + i) {
+                    numbers[j] = true;
                 }
             }
         }
         return counter;
+    }
+
+    public int countPrimesOptimal(int n) {
+        if (n < 2) return 0;
+        boolean[] numbers = new boolean[n + 1];
+        for (int i = 2; i <= (int) Math.sqrt(n); i++) {
+            if (!numbers[i]) {
+                for (int j = i * 2; j < n; j= j + i) {
+                    numbers[j] = true;
+                }
+            }
+        }
+
+        int numberOfPrimes = 0;
+        for (int i = 2; i < n; i++) {
+            if (!numbers[i]) {
+                ++numberOfPrimes;
+            }
+        }
+        return numberOfPrimes;
     }
 }
