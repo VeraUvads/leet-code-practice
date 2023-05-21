@@ -1,6 +1,5 @@
 package medium;
 
-import java.util.HashMap;
 
 public class LongestSubstringWithAtLeastKRepeatingCharacters_395 {
     //https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/
@@ -11,26 +10,23 @@ public class LongestSubstringWithAtLeastKRepeatingCharacters_395 {
         int uniqueCount = countUnique(s);
 
         for (int unique = 1; unique <= uniqueCount; unique++) {
-            HashMap<Character, Integer> map = new HashMap<>(26);
-            int start = 0, atLeastK = 0;
+            int[] map = new int[26];
+            int start = 0, curUnique = 0, atLeastK = 0;
             for (int end = 0; end < s.length(); end++) {
-                char endSymbol = s.charAt(end);
-                int count = map.getOrDefault(endSymbol, 0) + 1;
-                map.put(endSymbol, count);
-                if (count == k) {
+                int endIndex = s.charAt(end) - 'a';
+                if (map[endIndex]++ == 0) {
+                    curUnique++;
+                }
+                if (map[endIndex] == k) {
                     atLeastK++;
                 }
-                while (map.size() > unique) {
-                    char startSymbol = s.charAt(start);
-                    count = map.get(startSymbol) - 1;
-                    map.put(startSymbol, count);
-                    if (count + 1 == k) atLeastK--;
-                    if (count == 0) {
-                        map.remove(startSymbol);
-                    }
+                while (curUnique > unique) {
+                    int startIndex = s.charAt(start) - 'a';
+                    if (map[startIndex]-- == k) atLeastK--;
+                    if (map[startIndex] == 0) curUnique--;
                     start++;
                 }
-                if (atLeastK == map.size()) {
+                if (atLeastK == curUnique) {
                     max = Math.max(max, end - start + 1);
                 }
             }
