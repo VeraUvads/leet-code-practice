@@ -53,4 +53,27 @@ public class RegularExpressionMatching_10 {
         }
         return isMatch && check(string.substring(1), pattern.substring(1));
     }
+
+
+
+    public boolean isMatchDpTopDown(String text, String pattern) {
+        boolean[][] dp = new boolean[pattern.length() + 1][text.length() + 1];
+        dp[0][0] = true;
+        for(int i=1;i<pattern.length(); i+=2){
+            if(pattern.charAt(i)!='*') break;
+            dp[i+1][0] = true;
+        }
+        for (int row = 1; row < dp.length; row++) {
+            char pChar = pattern.charAt(row - 1);
+            for (int col = 1; col < dp[row].length; col++) {
+                char tChar = text.charAt(col - 1);
+                if (pChar == tChar || pChar == '.') {
+                    dp[row][col] = dp[row - 1][col - 1];
+                } else if (pChar == '*') {
+                    dp[row][col] = dp[row - 2][col] || dp[row][col - 1] && (tChar == pattern.charAt(row - 2) || pattern.charAt(row - 2) == '.') || dp[row - 1][col];
+                }
+            }
+        }
+        return dp[pattern.length()][text.length()];
+    }
 }
