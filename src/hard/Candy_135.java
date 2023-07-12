@@ -1,4 +1,4 @@
-package hard.not_finished;
+package hard;
 
 public class Candy_135 {
     // https://leetcode.com/problems/candy/description/?envType=study-plan-v2&envId=top-interview-150
