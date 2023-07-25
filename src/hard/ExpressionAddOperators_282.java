@@ -8,42 +8,49 @@ public class ExpressionAddOperators_282 {
 
     List<String> answer;
     String num;
-    int target;
+    long target;
 
-    public List<String> addOperators(String num, int target) {
+    public List<String> addOperators(String num, long target) {
         this.answer = new ArrayList<>();
         if (num.length() == 0) return answer;
-        this.target =  target;
+        this.target = target;
         this.num = num;
         backTrack(0, new StringBuilder(), 0, 0);
         return answer;
     }
 
-    private void backTrack(int index, StringBuilder builder, int evaluate, int curr) {
-        if (index == num.length()) {
+    private void backTrack(int start, StringBuilder builder, long evaluate, long curr) {
+        if (start == num.length()) {
             if (evaluate + curr == target) {
-                char last = builder.charAt(builder.length() - 1);
-                builder.deleteCharAt(builder.length() - 1);
                 answer.add(builder.toString());
-                builder.append(last);
             }
             return;
         }
-        int next = num.charAt(index) - '0';
-        builder.append(next);
-        if (index == 0) {
-            backTrack(index + 1, builder, next, curr);
-        } else {
-            builder.append("*");
-            backTrack(index + 1, builder, evaluate, curr * next);
-            builder.deleteCharAt(builder.length() - 1);
-            builder.append("+");
-            backTrack(index + 1, builder, evaluate + curr, next);
-            builder.deleteCharAt(builder.length() - 1);
-            builder.append("-");
-            backTrack(index + 1, builder, evaluate + curr, -next);
-            builder.deleteCharAt(builder.length() - 1);
+        long next = 0;
+        int size = builder.length();
+        for (int index = start; index < num.length(); index++) {
+            if (index != start && num.charAt(start) == '0') {
+                break;
+            }
+            next = next * 10 + num.charAt(index) - '0';
+            if (start == 0) {
+                builder.append(next);
+                backTrack(index + 1, builder, 0, next);
+                builder.setLength(size);
+            } else {
+                builder.append("*");
+                builder.append(next);
+                backTrack(index + 1, builder, evaluate, curr * next);
+                builder.setLength(size);
+                builder.append("+");
+                builder.append(next);
+                backTrack(index + 1, builder, evaluate + curr, next);
+                builder.setLength(size);
+                builder.append("-");
+                builder.append(next);
+                backTrack(index + 1, builder, evaluate + curr, -next);
+                builder.setLength(size);
+            }
         }
-        builder.deleteCharAt(builder.length() - 1);
     }
 }
