@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public class SnakesAndLadders_909 {
                     int next = curr + i;
                     if (next > last) break;
                     if (visited.add(next)) {
-                        int row = cells[next].getKey(), col = cells[next].getValue();
+                        int row = cells[next].getFirst(), col = cells[next].getSecond();
                         if (board[row][col] != -1 ) {
                             queue.add(board[row][col]);
                         } else {

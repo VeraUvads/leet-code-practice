@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.*;
 

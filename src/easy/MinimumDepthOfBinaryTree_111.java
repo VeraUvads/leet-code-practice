@@ -1,6 +1,6 @@
 package easy;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 import utils.TreeNode;
 
 import java.util.LinkedList;
@@ -15,8 +15,8 @@ public class MinimumDepthOfBinaryTree_111 {
         queue.add(new Pair<>(root, 1));
         while (!queue.isEmpty()) {
             Pair<TreeNode, Integer> pair = queue.poll();
-            root = pair.getKey();
-            int currentDepth = pair.getValue();
+            root = pair.getFirst();
+            int currentDepth = pair.getSecond();
             if (root.left == null && root.right == null) return currentDepth;
             if (root.right != null) {
                 queue.add(new Pair<>(root.right, currentDepth + 1));

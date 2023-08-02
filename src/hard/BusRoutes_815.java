@@ -1,6 +1,6 @@
 package hard;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.*;
 
@@ -40,8 +40,8 @@ public class BusRoutes_815 {
 
         while (!queue.isEmpty()) {
             Pair<Integer, Integer> node = queue.poll();
-            int stop = node.getKey();
-            int depth = node.getValue();
+            int stop = node.getFirst();
+            int depth = node.getSecond();
             if (stop == target) return depth;
             // Get the buses which visit this stop;
             List<Integer> buses = map.get(stop);

@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.Stack;
 
@@ -12,10 +12,10 @@ public class MinStack_155_2 {
     }
 
     public void push(int val) {
-        if (stack.isEmpty() || stack.peek().getValue() > val) {
+        if (stack.isEmpty() || stack.peek().getSecond() > val) {
             stack.push(new Pair<>(val, val));
         } else {
-            stack.push(new Pair<>(val, stack.peek().getValue()));
+            stack.push(new Pair<>(val, stack.peek().getSecond()));
         }
     }
 
@@ -24,10 +24,10 @@ public class MinStack_155_2 {
     }
 
     public int top() {
-        return stack.peek().getKey();
+        return stack.peek().getFirst();
     }
 
     public int getMin() {
-        return stack.peek().getValue();
+        return stack.peek().getSecond();
     }
 }

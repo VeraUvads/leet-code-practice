@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.*;
 
@@ -23,20 +23,20 @@ public class NetworkDelayTime_743 {
         minDist[k] = 0;
 
         Queue<Pair<Integer, Integer>> queue = new PriorityQueue<>(
-                Comparator.comparingInt(Pair::getKey)
+                Comparator.comparingInt(Pair::getFirst)
         );
         queue.add(new Pair<>(0, k));
 
         while (!queue.isEmpty()) {
             Pair<Integer, Integer> pair = queue.poll();
-            int currTime = pair.getKey();
-            int from = pair.getValue();
+            int currTime = pair.getFirst();
+            int from = pair.getSecond();
             if (!map.containsKey(from)) continue;
             if (currTime > minDist[from]) continue;
 
             for (Pair<Integer, Integer> edge : map.get(from)) {
-                int to = edge.getValue();
-                int dist = edge.getKey() + currTime;
+                int to = edge.getSecond();
+                int dist = edge.getFirst() + currTime;
                 if (dist < minDist[to]) {
                     minDist[to] = dist;
                     queue.add(new Pair<>(dist, to));

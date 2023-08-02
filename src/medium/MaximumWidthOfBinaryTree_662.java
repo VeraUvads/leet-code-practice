@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 import utils.TreeNode;
 
 import java.util.LinkedList;
@@ -17,8 +17,8 @@ public class MaximumWidthOfBinaryTree_662 {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 Pair<TreeNode, Integer> curr = queue.poll();
-                TreeNode node = curr.getKey();
-                int index = curr.getValue();
+                TreeNode node = curr.getFirst();
+                int index = curr.getSecond();
                 if (node.left != null) {
                     queue.add(new Pair<>(node.left, index * 2));
                 }
@@ -27,7 +27,7 @@ public class MaximumWidthOfBinaryTree_662 {
                 }
             }
             if (queue.isEmpty()) break;
-            int width = queue.getLast().getValue() - queue.getFirst().getValue() + 1;
+            int width = queue.getLast().getSecond() - queue.getFirst().getSecond() + 1;
             maxWidth = Math.max(width, maxWidth);
         }
 

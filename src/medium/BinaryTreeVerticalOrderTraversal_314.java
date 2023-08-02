@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 import utils.TreeNode;
 
 import java.util.*;
@@ -16,8 +16,8 @@ public class BinaryTreeVerticalOrderTraversal_314 {
         queue.add(new Pair<>(root, 0));
         while (!queue.isEmpty())  {
             Pair<TreeNode, Integer> curr = queue.poll();
-            TreeNode node = curr.getKey();
-            int level = curr.getValue();
+            TreeNode node = curr.getFirst();
+            int level = curr.getSecond();
             lowest = Math.min(level, lowest);
             List<Integer> list = map.getOrDefault(level, new ArrayList<>());
             list.add(node.val);

@@ -1,6 +1,6 @@
 package hard;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 import utils.Robot;
 
 import java.util.HashSet;
@@ -33,7 +33,7 @@ public class RobotRoomCleaner_489 {
             int newD = (d + i) % 4;
             Pair<Integer, Integer> pair = new Pair<>(row + dirs[newD][0], col + dirs[newD][1]);
             if (visited.add(pair) && robot.move()) {
-                backtrack(pair.getKey(), pair.getValue(), newD);
+                backtrack(pair.getFirst(), pair.getSecond(), newD);
                 goBack();
             }
             robot.turnLeft(); // -> init: left, turn: down, turn: right, turn : up, turn: left

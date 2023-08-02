@@ -1,6 +1,6 @@
 package medium;
 
-import javafx.util.Pair;
+import kotlin.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class TimeBasedKeyValueStore_981 {
             while (left < right) {
                 int midIndex = (left + right) / 2;
                 Pair<String, Integer> mid = list.get(midIndex);
-                int curr = mid.getValue();
+                int curr = mid.getSecond();
                 if (curr <= target) {
                     left = midIndex + 1;
                 } else {
@@ -40,7 +40,7 @@ public class TimeBasedKeyValueStore_981 {
                 }
             }
             if (right == 0) return "";
-            return list.get(right - 1).getKey();
+            return list.get(right - 1).getFirst();
         }
     }
 
@@ -61,8 +61,8 @@ public class TimeBasedKeyValueStore_981 {
             List<Pair<String, Integer>> list = map.get(key);
             for (int i = list.size() - 1; i >= 0; i--) {
                 Pair<String, Integer> pair = list.get(i);
-                if (pair.getValue() <= timestamp) {
-                    return pair.getKey();
+                if (pair.getSecond() <= timestamp) {
+                    return pair.getFirst();
                 }
             }
             return "";
