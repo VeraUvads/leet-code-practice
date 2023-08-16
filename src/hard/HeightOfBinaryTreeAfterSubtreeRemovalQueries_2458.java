@@ -19,9 +19,7 @@ public class HeightOfBinaryTreeAfterSubtreeRemovalQueries_2458 {
             int query = queries[i];
             NodeData data = nodeMap.get(query);
             int onLevel = data.level;
-            int depthForNode = data.depth;
             ArrayList<NodeData> neighbours = twoMaxNodeOnLevel.get(onLevel);
-            int maxDepth = 0;
             answer[i] = onLevel - 1;
 
             if (neighbours.size() > 1) {
