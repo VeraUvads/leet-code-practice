@@ -78,4 +78,35 @@ public class SortAnArray_912 {
     }
 
 
+
+    public int[] heapSort(int[] nums) {
+        int n = nums.length;
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(nums, i, n);
+        }
+
+        for (int i = n - 1; i >= 0;  i--) {
+            swap(nums, i, 0);
+            heapify(nums, 0, i);
+        }
+        return nums;
+    }
+
+    private void heapify(int[] nums, int index, int size) {
+        int left = index * 2 + 1;
+        int right = index * 2 + 2;
+        int largest = index;
+        if (left < size && nums[left] >  nums[largest]) {
+            largest = left;
+        }
+        if (right < size && nums[right] > nums[largest]) {
+            largest = right;
+        }
+        if (largest != index)  {
+            swap(nums, largest, index);
+            heapify(nums, largest, size);
+        }
+
+    }
+
 }
